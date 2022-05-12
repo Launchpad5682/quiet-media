@@ -1,0 +1,17 @@
+* {
+  font-family: "Work Sans", sans-serif;
+  box-sizing: border-box;
+  --padding-xs: 1rem;
+  --padding-sm: 2rem;
+  --padding-lg: 5rem;
+  --border-radius-search: 2rem;
+  margin: 0;
+}
+
+.App {
+  background-color: var(--dark-background-color);
+  color: var(--white);
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
