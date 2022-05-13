@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  gap: 5rem;
+}
+
+.form__container {
+  width: 100%;
+  max-width: 40rem;
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-xs);
+  box-shadow: 5px 5px 20px var(--green-teal);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
