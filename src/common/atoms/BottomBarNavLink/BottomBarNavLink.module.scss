@@ -1,0 +1,16 @@
+.link {
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: var(--white);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active__link {
+  color: var(--green-teal);
+}
+
+.inactive__link {
+}
