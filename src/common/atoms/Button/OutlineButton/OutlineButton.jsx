@@ -6,7 +6,7 @@ export const OutlineButton = ({
 }) => {
   return (
     <button
-      className="button--sm button__outline button__outline--green button__rounded--md  bold--typography"
+      className="button--sm button__outline button__outline--green button__rounded--lg  bold--typography"
       style={fullWidth && { width: "100%" }}
       onClick={clickHandler}
       disabled={disabled}
