@@ -1,0 +1,9 @@
+@import "../../../global/SideBar.module.scss";
+
+.right__sidebar {
+  @extend .sidebar;
+  max-width: 40rem;
+  margin-left: auto;
+  background-color: red;
+  border-left: 1px var(--white) solid;
+}
