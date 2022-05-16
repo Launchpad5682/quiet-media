@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { SolidButton, InputField, OutlineButton } from "../../../common";
 import styles from "../Auth.module.scss";
 import { Logo } from "../Logo";
@@ -5,6 +6,7 @@ import { useLogin } from "./useLogin";
 
 export const Login = () => {
   const { formData, loading, changeHandler, submitHandler } = useLogin();
+  const navigate = useNavigate();
   return (
     <div className={styles.main}>
       <Logo />
@@ -30,7 +32,11 @@ export const Login = () => {
             fullWidth={true}
             disabled={loading}
           />
-          <OutlineButton buttonText="Create an account" fullWidth={true} />
+          <OutlineButton
+            buttonText="Create an account"
+            fullWidth={true}
+            clickHandler={() => navigate("/signup")}
+          />
         </form>
       </div>
     </div>
