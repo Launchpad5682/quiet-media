@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, firestoreDB } from "../../../firebase";
 
@@ -13,7 +14,6 @@ export const useSignUp = () => {
   });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
 
@@ -44,7 +44,8 @@ export const useSignUp = () => {
         photoURL: "",
       });
       navigate("/home");
-      await addDoc(collection(firestoreDB, "users"), {
+      await setDoc(doc(firestoreDB, "users", username), {
+        username: username,
         displayName: fullName,
         photoURL: null,
         backgroundImageURL: null,
@@ -55,7 +56,6 @@ export const useSignUp = () => {
         following: [],
         uid: auth.currentUser.uid,
         bookmarkPosts: [],
-        username: username,
         notifications: [],
       });
     } catch (error) {

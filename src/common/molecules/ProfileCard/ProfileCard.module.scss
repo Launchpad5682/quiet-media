@@ -1,0 +1,26 @@
+.profile__card {
+  width: 100%;
+  background-color: var(--dark-background-color);
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-xs);
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  &:hover {
+    background-color: var(--dark-hover-color);
+    border: 1px solid var(--border-gray);
+  }
+}
+
+.profile__name {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: 100%;
+}
+
+.option {
+  margin-left: auto;
+  font-size: 2rem;
+}

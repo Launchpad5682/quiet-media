@@ -6,13 +6,13 @@ export const SolidButton = ({
 }) => {
   return (
     <button
-      className="button--sm button__solid button--green button__rounded--md bold--typography"
-      style={fullWidth && { width: "100%" }}
+      className="button--sm button__solid button--green button__rounded--lg bold--typography"
+      style={fullWidth ? { width: "100%" } : { width: "fit-content" }}
       type="submit"
       disabled={disabled}
       onClick={clickHandler}
     >
-      <span className="subtitle1__typography typography--white bold--typography">
+      <span className="h6__typography typography--white bold--typography">
         {buttonText}
       </span>
     </button>

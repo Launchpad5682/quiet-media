@@ -1,0 +1,10 @@
+.option {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  padding: var(--padding-xs);
+  gap: 1rem;
+  &:hover {
+    background-color: var(--dark-hover-color);
+  }
+}

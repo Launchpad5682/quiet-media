@@ -1,0 +1,25 @@
+@import "../../../global/SideBar.module.scss";
+
+.logo {
+  width: fit-content;
+  margin-left: var(--padding-xs);
+  cursor: pointer;
+}
+
+.left__sidebar {
+  @extend .sidebar;
+  max-width: 30rem;
+  background-color: pink;
+  background-color: var(--dark-background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: var(--padding-sm);
+  border-right: 1px var(--border-gray) solid;
+}
+
+.nav__container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
