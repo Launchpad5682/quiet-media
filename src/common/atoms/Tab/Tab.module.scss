@@ -1,0 +1,17 @@
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid var(--border-gray);
+  background-color: var(--dark-background-color);
+  &:hover {
+    background-color: var(--dark-hover-color);
+  }
+}
+
+.active {
+  background-color: var(--dark-hover-color);
+}
