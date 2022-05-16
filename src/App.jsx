@@ -13,11 +13,11 @@ import { PrivateRoute } from "./helper/PrivateRoute";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { setUserInformation } from "./routes/UserProfile/UserSlice";
 import { Modal } from "./common/organisms/Modal/Modal";
+import { Landing } from "./routes/Landing/Landing";
 
 function App() {
   const dispatch = useDispatch();
   const modal = useSelector((store) => store.modal);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -49,7 +49,7 @@ function App() {
   return (
     <div className={styles.App}>
       <Routes>
-        <Route path="/" element={<>This is the test page</>} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route
@@ -66,6 +66,8 @@ function App() {
           <Route path="bookmarks" element={<>Bookmark</>} />
           <Route path="notifications" element={<>Notification</>} />
           <Route path="profile" element={<>Profile</>} />
+          <Route path="/user/:userid" element={<></>} />
+          <Route path="/post/:postid" element={<></>} />
         </Route>
       </Routes>
     </div>
