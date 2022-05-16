@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const modalSlice = createSlice({
   name: "modal",
-  initialState: { type: null, edit: false },
+  initialState: { type: null, edit: false, _id: null },
   reducers: {
     setModal: (state, action) => {
       return action.payload;
@@ -10,6 +10,7 @@ export const modalSlice = createSlice({
     clearModal: (state, action) => {
       state.type = null;
       state.edit = false;
+      state._id = null;
     },
   },
 });
