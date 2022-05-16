@@ -7,7 +7,7 @@ export const SolidButton = ({
   return (
     <button
       className="button--sm button__solid button--green button__rounded--lg bold--typography"
-      style={fullWidth && { width: "100%" }}
+      style={fullWidth ? { width: "100%" } : { width: "fit-content" }}
       type="submit"
       disabled={disabled}
       onClick={clickHandler}
