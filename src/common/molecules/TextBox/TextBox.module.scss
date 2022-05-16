@@ -1,0 +1,69 @@
+.text__box {
+  max-width: 100%;
+  min-height: 10rem;
+  height: fit-content;
+  max-height: 100%;
+  background-color: var(--dark-background-color);
+  display: flex;
+  box-sizing: border-box;
+  padding: var(--padding-xs);
+  margin: var(--padding-xs);
+  gap: 1rem;
+}
+
+.text__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+
+.button__container {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.uploader__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-xs);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--dark-hover-color);
+  }
+}
+
+.input__file {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+.preview {
+  width: 100%;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: var(--white);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--dark-hover-color);
+  }
+}
