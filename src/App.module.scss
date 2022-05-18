@@ -10,19 +10,19 @@
   --dark-hover-color: #0e1f33;
   --border-gray: #2d435e;
   margin: 0;
-}
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
 
-*::-webkit-scrollbar {
-  width: 2px;
-}
+  ::-webkit-scrollbar-track {
+    background-color: var(--dark-hover-color);
+  }
 
-*::-webkit-scrollbar-track {
-  background-color: var(--dark-hover-color);
-}
-
-*::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 6px var(--green-teal);
-  background-color: var(--green-teal);
+  ::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px var(--green-teal);
+    background-color: var(--green-teal);
+  }
+  scrollbar-color: var(--green-teal) var(--dark-hover-color);
 }
 
 .App {
