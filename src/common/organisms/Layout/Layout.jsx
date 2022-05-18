@@ -21,10 +21,12 @@ export const Layout = () => {
 
   return (
     <div className={styles.page}>
-      {screenWidth <= 1000 && <Header />}
       <main className={styles.main}>
         {screenWidth > 1000 && <LeftSideBar />}
-        <Outlet />
+        <div className={styles.main__body}>
+          <Header />
+          <Outlet />
+        </div>
         {screenWidth > 1200 && <RightSideBar />}
       </main>
       {screenWidth <= 1000 && <BottomBar />}
