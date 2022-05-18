@@ -1,0 +1,20 @@
+.comment {
+  display: flex;
+  width: 100%;
+  background-color: var(--dark-background-color);
+  padding: var(--padding-xs);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--border-radius-xs);
+}
+
+.comment__body {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.comment__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
