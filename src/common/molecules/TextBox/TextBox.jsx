@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 import { collection, addDoc, Timestamp, setDoc, doc } from "firebase/firestore";
 import { firestoreDB, storage } from "../../../firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   deleteObject,
   getDownloadURL,
@@ -16,7 +16,6 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import { validURL } from "../../../helper/validURL";
-import { updatePost } from "../../../routes/Home/HomeSlice";
 
 export const TextBox = ({
   closeHandler = () => {},
@@ -27,7 +26,6 @@ export const TextBox = ({
   const [count, setCount] = useState(0);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
 
   const [selectedFile, setSelectedFile] = useState(null);
   const userInformation = useSelector((store) => store.userInformation);
@@ -79,15 +77,15 @@ export const TextBox = ({
         };
         await setDoc(docRef, updatedPost);
 
-        dispatch(
-          updatePost({
-            post: {
-              ...updatedPost,
-              createdAt: updatedPost.createdAt.toDate().toString(),
-            },
-            _id: _id,
-          })
-        );
+        // dispatch(
+        //   updatePost({
+        //     post: {
+        //       ...updatedPost,
+        //       createdAt: updatedPost.createdAt.toDate().toString(),
+        //     },
+        //     _id: _id,
+        //   })
+        // );
 
         setValue("");
         setCount(0);
@@ -134,7 +132,10 @@ export const TextBox = ({
   return (
     <div className={styles.text__box}>
       <div className={styles.avatar__container}>
-        <Avatar size="sm" />
+        <Avatar
+          size="sm"
+          imgURL={userInformation.photoURL ? userInformation.photoURL : ""}
+        />
       </div>
       <div className={styles.text__container}>
         <TextBoxField
