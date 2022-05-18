@@ -1,93 +1,114 @@
+import { useEffect, useState } from "react";
+import { Loader, Post } from "../../common";
+import { HomeTabs } from "../../common/molecules/HomeTabs/HomeTabs";
+import styles from "../Home/Home.module.scss";
 import {
   collection,
-  DocumentSnapshot,
-  getDocs,
   limit,
+  onSnapshot,
   orderBy,
   query,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { HomeTabs } from "../../common/molecules/HomeTabs/HomeTabs";
-import { TextBox } from "../../common/molecules/TextBox/TextBox";
 import { firestoreDB } from "../../firebase";
-import styles from "./Home.module.scss";
-import { postsSortBy, setPosts } from "./HomeSlice";
 
 const postsRef = collection(firestoreDB, "posts");
 
-export const Home = () => {
-  const dispatch = useDispatch();
-  const [lastVisible, setLastVisible] = useState(null);
-  const { posts, loading, sortBy } = useSelector((store) => store.home);
+export const Explore = () => {
+  // const dispatch = useDispatch();
+  // const [lastVisible, setLastVisible] = useState(null);
+  // const { posts, loading, sortBy } = useSelector((store) => store.explore);
 
-  useEffect(() => {
-    // dispatch();
-    fetchByLatest();
-    return () => {};
-  }, []);
+  // const updateHandler = (fetchedPosts) => {
+  //   dispatch(setExplorePosts(fetchedPosts));
+  // };
+
+  // usePosts({ sortBy, updateHandler });
+
+  // const fetchByLatest = () => {
+  //   dispatch(explorePostsSortBy("latest"));
+  // };
+
+  // const fetchByTrending = () => {
+  //   dispatch(explorePostsSortBy("trending"));
+  // };
+
+  // useEffect(() => {
+  //   console.log("fetching by latest at first from loading");
+
+  //   dispatch(explorePostsSortBy("latest"));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  const [sortBy, setSortBy] = useState("latest");
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const fetchByLatest = () => {
-    dispatch(postsSortBy("latest"));
-    const postsRefQuery = query(
-      postsRef,
-      orderBy("createdAt", "desc"),
-      limit(5)
-    );
-
-    (async () => {
-      const postsData = await getDocs(postsRefQuery);
-      const postsLastVisibleLatest = postsData.docs[postsData.docs.length - 1];
-      console.log(postsLastVisibleLatest);
-      setLastVisible(postsLastVisibleLatest);
-      // console.log(postsData);
-      const fetchedPosts = [];
-      postsData.forEach((doc) =>
-        fetchedPosts.push({
-          ...doc.data(),
-          createdAt: doc.data().createdAt.toDate().toString(),
-        })
-      );
-      // console.log(fetchedPosts);
-      dispatch(setPosts(fetchedPosts));
-    })();
+    setSortBy("latest");
   };
 
   const fetchByTrending = () => {
-    dispatch(postsSortBy("trending"));
-    const postsRefQuery = query(
-      postsRef,
-      orderBy("likesCount", "desc"),
-      limit(5)
-    );
-
-    (async () => {
-      const postsData = await getDocs(postsRefQuery);
-      const postsLastVisibleTrending =
-        postsData.docs[postsData.docs.length - 1];
-      // console.log(postsLastVisibleTrending);
-      setLastVisible(postsLastVisibleTrending);
-      // console.log(postsData);
-      const fetchedPosts = [];
-      postsData.forEach((doc) =>
-        fetchedPosts.push({
-          ...doc.data(),
-          createdAt: doc.data().createdAt.toDate().toString(),
-        })
-      );
-      // console.log(fetchedPosts);
-      dispatch(setPosts(fetchedPosts));
-    })();
+    setSortBy("trending");
   };
+
+  useEffect(() => {
+    let unsubscribe = () => {};
+    if (sortBy === "latest") {
+      setLoading(true);
+      const postsRefQuery = query(
+        postsRef,
+        orderBy("createdAt", "desc"),
+        limit(30)
+      );
+      unsubscribe = onSnapshot(postsRefQuery, (docs) => {
+        // console.log(lastVisited);
+        const fetchedPosts = [];
+
+        docs.forEach((doc) => {
+          fetchedPosts.push({
+            _id: doc.id,
+            ...doc.data(),
+            createdAt: doc.data().createdAt.toDate().toString(),
+          });
+        });
+        // updateHandler(fetchedPosts);
+        setPosts(fetchedPosts);
+        setLoading(false);
+
+        // setLastVisited(docs.data()[docs.data().length - 1]);
+      });
+    } else if (sortBy === "trending") {
+      setLoading(true);
+      const postsRefQuery = query(
+        postsRef,
+        orderBy("likesCount", "desc"),
+        limit(30)
+      );
+      unsubscribe = onSnapshot(postsRefQuery, (docs) => {
+        const fetchedPosts = [];
+        docs.forEach((doc) =>
+          fetchedPosts.push({
+            _id: doc.id,
+            ...doc.data(),
+            createdAt: doc.data().createdAt.toDate().toString(),
+          })
+        );
+        setPosts(fetchedPosts);
+        setLoading(false);
+      });
+    }
+    return () => unsubscribe();
+  }, [sortBy]);
 
   return (
     <div className={styles.home}>
-      <TextBox />
       <HomeTabs active={sortBy} handlers={[fetchByLatest, fetchByTrending]} />
-      <div>
-        {posts.map((post) => (
-          <div>{JSON.stringify(post)}</div>
-        ))}
+      <div className={styles.posts}>
+        {loading && <Loader />}
+        {posts?.length > 0 &&
+          posts.map((post) => (
+            <Post key={`${post.createdAt}_${post.uid}`} post={post} />
+          ))}
       </div>
     </div>
   );
