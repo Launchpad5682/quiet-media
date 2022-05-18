@@ -4,6 +4,7 @@
   align-items: center;
   padding: var(--padding-xs);
   gap: 1rem;
+  cursor: pointer;
   &:hover {
     background-color: var(--dark-hover-color);
   }
