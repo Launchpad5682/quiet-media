@@ -55,7 +55,8 @@ function App() {
       unsubscribe();
       unsubscribeListner();
     };
-  }, [dispatch, navigate]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.App}>
