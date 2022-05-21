@@ -3,7 +3,6 @@ import { SideBarNavLink } from "../../atoms/SideBarNavLink/SideBarNavLink";
 import styles from "./LeftSideBar.module.scss";
 import { AiOutlineHome, AiOutlineRocket } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
-import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { SolidButton } from "../../";
 import { ProfileCard } from "../ProfileCard/ProfileCard";

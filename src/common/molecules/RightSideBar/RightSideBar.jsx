@@ -25,6 +25,7 @@ export const RightSideBar = () => {
 
   const dispatch = useDispatch();
 
+  // TODO: IMPLEMENT PAGINATED REQUESTS
   const paginateProfilesFetch = async () => {
     try {
       const next = query(

@@ -2,7 +2,6 @@ import styles from "./BottomBar.module.scss";
 
 import { AiOutlineHome, AiOutlineRocket } from "react-icons/ai";
 import { BsBookmark, BsSearch } from "react-icons/bs";
-import { IoNotificationsOutline } from "react-icons/io5";
 import { BottomBarNavLink } from "../../atoms/BottomBarNavLink/BottomBarNavLink";
 
 export const BottomBar = () => {
