@@ -1,4 +1,4 @@
-import { doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import {
   deleteObject,
   getDownloadURL,

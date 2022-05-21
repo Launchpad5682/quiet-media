@@ -10,7 +10,9 @@ import { useOnClickOutside } from "../../../hooks/useOnClickOutside";
 
 export const ProfileCard = () => {
   const [dropdown, setDropdown] = useState(false);
-  const photoURL = useSelector((store) => store.userInformation.photoURL);
+  const { username, displayName, photoURL } = useSelector(
+    (store) => store.userInformation
+  );
   const dropdownRef = useRef();
 
   const { logout } = useLogout();
@@ -32,8 +34,8 @@ export const ProfileCard = () => {
       )}
       <Avatar size="sm" imgURL={photoURL ? photoURL : ""} />
       <div className={styles.profile__name}>
-        <span className="h6__typography bold--typography">Saurabh Suthar</span>
-        <span className="subtitle1__typography">@saurabh22suthar</span>
+        <span className="h6__typography bold--typography">{displayName}</span>
+        <span className="subtitle1__typography">@{username}</span>
       </div>
       <span className={styles.option}>
         <IoIosOptions />
