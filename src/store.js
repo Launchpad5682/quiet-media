@@ -4,6 +4,7 @@ import { authReducer } from "./routes/Auth/AuthSlice";
 import { homeReducer } from "./routes/Home/HomeSlice";
 import { exploreReducer } from "./routes/Explore/ExploreSlice";
 import { userReducer } from "./routes/User/UserSlice";
+import { searchReducer } from "./common/molecules/RightSideBar/SearchSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     modal: modalReducer,
     home: homeReducer,
     explore: exploreReducer,
+    search: searchReducer,
   },
 });
