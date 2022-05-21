@@ -1,6 +1,6 @@
 import styles from "./Tab.module.scss";
 
-export const TabElement = ({
+export const Tab = ({
   clickHandler = () => {},
   displayName,
   active = false,

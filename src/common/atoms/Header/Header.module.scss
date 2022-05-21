@@ -1,5 +1,21 @@
 .header {
   &__dark {
     background-color: var(--dark-background-color);
+    border-bottom: 1px solid var(--border-gray);
   }
+}
+
+.avatar__container {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  width: 12rem;
+  height: 4rem;
+  display: flex;
+  right: 0;
+  background-color: var(--dark-background-color);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--border-radius-xs);
 }

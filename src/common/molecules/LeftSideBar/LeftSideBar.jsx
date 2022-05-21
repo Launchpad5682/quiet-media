@@ -7,12 +7,13 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { SolidButton } from "../../";
 import { ProfileCard } from "../ProfileCard/ProfileCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../organisms/Modal/ModalSlice";
 
 export const LeftSideBar = () => {
   const dispatch = useDispatch();
   const createPost = () => dispatch(setModal({ type: "post", edit: false }));
+  const username = useSelector((store) => store.userInformation.username);
 
   return (
     <div className={styles.left__sidebar}>
@@ -38,7 +39,7 @@ export const LeftSideBar = () => {
           <IoNotificationsOutline />
           Notifications
         </SideBarNavLink>
-        <SideBarNavLink path="/profile">
+        <SideBarNavLink path={`/user/${username}`}>
           <CgProfile />
           Profile
         </SideBarNavLink>

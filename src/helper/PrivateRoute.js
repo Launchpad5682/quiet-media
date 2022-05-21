@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { FullPageLoader } from "../../common/organisms//FullPageLoader/FullPageLoader";
+import { FullPageLoader } from "../common/organisms/FullPageLoader/FullPageLoader";
 
-export const Landing = () => {
+export const PrivateRoute = ({ children }) => {
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
@@ -11,8 +11,7 @@ export const Landing = () => {
   if (loading) {
     return <FullPageLoader />;
   } else if (authenticated && !loading) {
-    return <Navigate to="/home" />;
+    return children;
   }
-
-  return <>Landing Page</>;
+  return <Navigate to="/login" replace={true} />;
 };

@@ -1,0 +1,28 @@
+.comment__box {
+  width: 100%;
+  display: flex;
+  background-color: var(--dark-background-color);
+  gap: 1rem;
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid var(--border-gray);
+  border-radius: var(--border-radius-xs);
+  background-color: var(--dark-background-color);
+  color: var(--white);
+  padding: var(--padding-xs);
+  line-height: 2.5rem;
+  resize: none;
+  &::placeholder {
+    color: var(--border-gray);
+  }
+  &:focus {
+    outline: 1px solid var(--white);
+  }
+  &__overflow {
+    &:focus {
+      outline: 1px solid var(--tomato-red);
+    }
+  }
+}
