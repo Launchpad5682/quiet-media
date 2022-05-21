@@ -41,3 +41,7 @@ Live link: [Link](https://quiet-media.vercel.app/)
 - Search user
 - Mobile responsive sidebar, it becomes bottom bar on smaller devices
 
+https://user-images.githubusercontent.com/43728957/169650077-03d7b476-0ad8-460f-b353-1b2f816d1bd5.mp4
+
+
+
