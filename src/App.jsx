@@ -1,5 +1,5 @@
 import styles from "./App.module.scss";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, firestoreDB } from "./firebase";
@@ -18,11 +18,14 @@ import {
   Bookmarks,
   User,
 } from "./routes";
+import { Search } from "./routes/Search/Search";
 
 function App() {
   const dispatch = useDispatch();
   const modal = useSelector((store) => store.modal);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   useEffect(() => {
     let unsubscribeListner = () => {};
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -36,7 +39,6 @@ function App() {
           );
 
           unsubscribeListner = onSnapshot(docRef, (docs) => {
-            console.log("data from snapshot");
             docs.forEach((doc) => {
               dispatch(setUserInformation({ ...doc.data() }));
             });
@@ -55,8 +57,25 @@ function App() {
       unsubscribe();
       unsubscribeListner();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const route = pathname.split("/")[1];
+    console.log(route);
+    if (
+      route === "home" ||
+      route === "search" ||
+      route === "explore" ||
+      route === "post" ||
+      route === "bookmarks"
+    ) {
+      document.title = route[0].toUpperCase() + route.slice(1);
+    } else if (route === "user") {
+      const subroute = pathname.split("/")[2];
+      document.title = subroute;
+    }
+  }, [pathname]);
 
   return (
     <div className={styles.App}>
@@ -78,6 +97,7 @@ function App() {
           <Route path="notifications" element={<>Notification</>} />
           <Route path="/user/:userid" element={<User />} />
           <Route path="/post/:postid" element={<SinglePagePost />} />
+          <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
     </div>
