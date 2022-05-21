@@ -1,4 +1,3 @@
-import { Children } from "react";
 import styles from "./IconButton.module.scss";
 
 export const IconButton = ({ icon, clickHandler = () => {}, children }) => {

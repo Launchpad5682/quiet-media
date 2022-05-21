@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./TextBoxField.module.scss";
 
 export const TextBoxField = ({ value, changeHandler, count }) => {
   const textareaRef = useRef(null);
+
+  // implement typing based resizing of textfield
   //   useEffect(() => {
   //     if (textareaRef) {
   //       textareaRef.current.style.height = "inherit";
@@ -22,5 +24,3 @@ export const TextBoxField = ({ value, changeHandler, count }) => {
     />
   );
 };
-
-// <textarea className={styles.textarea} />
