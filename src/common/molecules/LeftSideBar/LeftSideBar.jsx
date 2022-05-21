@@ -35,10 +35,10 @@ export const LeftSideBar = () => {
           <BsBookmark />
           Bookmarks
         </SideBarNavLink>
-        <SideBarNavLink path="/notifications">
+        {/* <SideBarNavLink path="/notifications">
           <IoNotificationsOutline />
           Notifications
-        </SideBarNavLink>
+        </SideBarNavLink> */}
         <SideBarNavLink path={`/user/${username}`}>
           <CgProfile />
           Profile

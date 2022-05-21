@@ -1,0 +1,32 @@
+.profile__card {
+  width: 100%;
+  background-color: var(--dark-background-color);
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-xs);
+  border: 1px solid var(--border-gray);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    background-color: var(--dark-hover-color);
+    border: 1px solid var(--border-gray);
+  }
+}
+
+.profile__name {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: 100%;
+}
+
+.follow {
+  margin-left: auto;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--dark-hover-color);
+  padding: var(--padding-xs);
+  font-size: 1.2rem;
+  font-weight: 900;
+}
