@@ -1,25 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Quiet Media",
+  "name": "",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.co/storage/v1/object/sign/quiet-media/quiet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJxdWlldC1tZWRpYS9xdWlldC5wbmciLCJpYXQiOjE2NTMxMjc5OTEsImV4cCI6MTk2ODQ4Nzk5MX0.MfQTwH8F_cfZJS8_QFOgEuSozGFC7TpqTVgwEK4dEE0",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.co/storage/v1/object/sign/quiet-media/quiet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJxdWlldC1tZWRpYS9xdWlldC5wbmciLCJpYXQiOjE2NTMxMjc5OTEsImV4cCI6MTk2ODQ4Nzk5MX0.MfQTwH8F_cfZJS8_QFOgEuSozGFC7TpqTVgwEK4dEE0",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "https://yifgzyyqlpgydlzwcsaj.supabase.co/storage/v1/object/sign/quiet-media/quiet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJxdWlldC1tZWRpYS9xdWlldC5wbmciLCJpYXQiOjE2NTMxMjc5OTEsImV4cCI6MTk2ODQ4Nzk5MX0.MfQTwH8F_cfZJS8_QFOgEuSozGFC7TpqTVgwEK4dEE0",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#08111b",
+  "background_color": "#08111b"
 }
