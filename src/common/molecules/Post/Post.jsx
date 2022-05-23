@@ -1,7 +1,7 @@
 import { Avatar } from "../../atoms/Avatar/Avatar";
 import { BsShareFill, BsThreeDots } from "react-icons/bs";
 import styles from "./Post.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../../hooks/useOnClickOutside";
 
 import {
@@ -18,11 +18,11 @@ import { OptionItem } from "../../atoms/OptionItem/OptionItem";
 import { deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { firestoreDB, storage } from "../../../firebase";
 import { setModal } from "../../organisms/Modal/ModalSlice";
-import { deleteObject, ref } from "firebase/storage";
+import { deleteObject } from "firebase/storage";
 import { useFollow } from "../../../hooks/useFollow";
 import { useNavigate } from "react-router-dom";
 
-export const Post = ({ post }) => {
+export const Post = forwardRef(({ post }, ref) => {
   const [dropdown, setDropdown] = useState(false);
   const {
     _id,
@@ -162,7 +162,7 @@ export const Post = ({ post }) => {
   }, [_id, loggedInUser.bookmarkPosts]);
 
   return (
-    <div className={styles.post}>
+    <div className={styles.post} ref={ref}>
       <div className={styles.post__header}>
         <div
           className={styles.profile}
@@ -237,4 +237,4 @@ export const Post = ({ post }) => {
       </div>
     </div>
   );
-};
+});

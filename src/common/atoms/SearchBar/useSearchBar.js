@@ -35,7 +35,11 @@ export function useSearchBar() {
 
         snapshot.forEach((doc) => profiles.push(doc.data()));
 
-        dispatch(setProfiles({ search: true, profiles }));
+        const filteredProfiles = profiles.filter((profile) =>
+          profile.username.includes(searchInput)
+        );
+
+        dispatch(setProfiles({ search: true, profiles: filteredProfiles }));
       })();
     }
   };
