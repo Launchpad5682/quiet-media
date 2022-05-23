@@ -6,7 +6,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Loader, Post, TextBox, HomeTabs } from "../../common";
 import { firestoreDB } from "../../firebase";
@@ -27,6 +27,17 @@ export const Home = () => {
   const [sortBy, setSortBy] = useState("latest");
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [lastElement, setLastElement] = useState(null);
+
+  const observer = useRef(
+    new IntersectionObserver((entries) => {
+      const target = entries[0];
+      // console.log("intersection happeing");
+      if (target.isIntersecting) {
+        // console.log("hitting the bottom of the posts");
+      }
+    })
+  );
 
   const fetchByLatest = () => {
     setSortBy("latest");
@@ -35,6 +46,21 @@ export const Home = () => {
   const fetchByTrending = () => {
     setSortBy("trending");
   };
+
+  useEffect(() => {
+    const currentElement = lastElement;
+    console.log(currentElement);
+    const currentObserver = observer.current;
+    if (currentElement) {
+      currentObserver.observe(currentElement);
+    }
+
+    return () => {
+      if (currentElement) {
+        currentObserver.unobserve(currentElement);
+      }
+    };
+  }, [lastElement]);
 
   useEffect(() => {
     let unsubscribe = () => {};
@@ -94,7 +120,13 @@ export const Home = () => {
       <div className={styles.posts}>
         {loading && <Loader />}
         {posts?.length > 0 &&
-          posts.map((post) => <Post key={`${post._id}`} post={post} />)}
+          posts.map((post, index) =>
+            index === posts.length - 1 ? (
+              <Post key={`${post._id}`} post={post} ref={setLastElement} />
+            ) : (
+              <Post key={`${post._id}`} post={post} ref={null} />
+            )
+          )}
       </div>
     </div>
   );
