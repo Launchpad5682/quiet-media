@@ -4,13 +4,8 @@ import styles from "./SearchBar.module.scss";
 import { useSearchBar } from "./useSearchBar";
 
 export function SearchBar() {
-  const {
-    searchInput,
-    changeHandler,
-    searchHandler,
-    clearHandler,
-    searchClickHandler,
-  } = useSearchBar();
+  const { searchInput, changeHandler, clearHandler, searchClickHandler } =
+    useSearchBar();
 
   return (
     <div className={styles.search__container}>
@@ -20,7 +15,6 @@ export function SearchBar() {
         id=""
         className={styles.search__input}
         onChange={changeHandler}
-        onKeyDown={searchHandler}
         value={searchInput}
         placeholder="Search"
       />
@@ -33,7 +27,10 @@ export function SearchBar() {
             <BsXLg />
           </span>
         )}
-        <span className="subtitle1__typography" onClick={searchClickHandler}>
+        <span
+          className="subtitle1__typography"
+          onClick={() => searchClickHandler(searchInput)}
+        >
           <BsSearch />
         </span>
       </span>
