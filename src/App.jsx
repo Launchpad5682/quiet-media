@@ -62,7 +62,6 @@ function App() {
 
   useEffect(() => {
     const route = pathname.split("/")[1];
-    console.log(route);
     if (
       route === "home" ||
       route === "search" ||
