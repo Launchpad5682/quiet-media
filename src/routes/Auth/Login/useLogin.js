@@ -40,5 +40,17 @@ export const useLogin = () => {
     setFormData({ email: "", password: "" });
   };
 
-  return { formData, loading, changeHandler, submitHandler };
+  const testLoginHandler = async () => {
+    const email = "test36@gmail.com";
+    const password = "test36";
+    setFormData({ email, password });
+  };
+
+  return {
+    formData,
+    loading,
+    changeHandler,
+    submitHandler,
+    testLoginHandler,
+  };
 };
