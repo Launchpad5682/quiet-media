@@ -1,5 +1,5 @@
 import { Avatar } from "../../atoms/Avatar/Avatar";
-import { BsShareFill, BsThreeDots } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
 import styles from "./Post.module.scss";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../../hooks/useOnClickOutside";
@@ -105,7 +105,8 @@ export const Post = forwardRef(({ post }, ref) => {
       );
     }
   };
-  const shareHandler = () => {};
+  // TODO
+  // const shareHandler = () => {};
 
   const followHandler = () => {
     if (follow) {
@@ -233,7 +234,7 @@ export const Post = forwardRef(({ post }, ref) => {
           icon={bookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
           clickHandler={bookmarkHandler}
         />
-        <IconButton icon={<BsShareFill />} clickHandler={shareHandler} />
+        {/* <IconButton icon={<BsShareFill />} clickHandler={shareHandler} /> */}
       </div>
     </div>
   );
