@@ -22,6 +22,13 @@ import { deleteObject } from "firebase/storage";
 import { useFollow } from "../../../hooks/useFollow";
 import { useNavigate } from "react-router-dom";
 
+const formatDate = (createdAt) => {
+  const dateArr = createdAt.split(" ");
+  const time = dateArr[4].split(":").slice(0, -1).join(":");
+  const date = dateArr.slice(1, 4).join(" ");
+  return `${time} ${date}`;
+};
+
 export const Post = forwardRef(({ post }, ref) => {
   const [dropdown, setDropdown] = useState(false);
   const {
@@ -218,7 +225,7 @@ export const Post = forwardRef(({ post }, ref) => {
         <div className={styles.image__container}>
           {imageURL && <img src={imageURL} alt="" className="image__fit" />}
         </div>
-        <div className="subtitle2__typography">{createdAt}</div>
+        <div className="subtitle2__typography">{formatDate(createdAt)}</div>
       </div>
       <div className={styles.bottom}>
         <IconButton
