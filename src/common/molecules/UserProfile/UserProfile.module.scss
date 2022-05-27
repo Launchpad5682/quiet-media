@@ -30,12 +30,12 @@
 }
 
 .avatar__container {
-  position: relative;
   grid-row-start: 3;
   grid-column-start: 1;
   position: absolute;
   bottom: 78%;
   left: 2%;
+  z-index: 4;
   border-radius: 50%;
   border: 2px solid var(--border-gray);
   @media screen and (max-width: 450px) {
@@ -44,6 +44,8 @@
 }
 
 .button {
+  display: flex;
+  gap: 1rem;
   grid-row-start: 3;
   grid-column-start: 6;
   grid-column-end: -1;
@@ -82,14 +84,20 @@
   cursor: pointer;
 }
 
-.input__file {
+.input__file__bg {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
   opacity: 0;
+  width: 100%;
+  height: 100%;
   z-index: 2;
+}
+
+.input__file {
+  @extend .input__file__bg;
   border-radius: 50%;
 }
 
@@ -169,6 +177,7 @@
   right: 0;
   font-size: 4rem;
   cursor: pointer;
+  z-index: 4;
 }
 
 .delete__profile {

@@ -36,6 +36,7 @@ export const TextBox = ({
       const { content, imageURL } = post;
       setValue(content);
       setSelectedFile(imageURL);
+      setCount(content.length);
     }
   }, [post, edit]);
 

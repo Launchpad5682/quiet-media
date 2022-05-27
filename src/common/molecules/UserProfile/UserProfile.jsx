@@ -11,6 +11,7 @@ import { firestoreDB, storage } from "../../../firebase";
 import { validURL } from "../../../helper/validURL";
 import { useFollow } from "../../../hooks/useFollow";
 import { Avatar } from "../../atoms/Avatar/Avatar";
+import { OutlineButton } from "../../atoms/Button/OutlineButton/OutlineButton";
 import { SolidButton } from "../../atoms/Button/SolidButton/SolidButton";
 import styles from "./UserProfile.module.scss";
 
@@ -215,12 +216,11 @@ export const UserProfile = ({
 
           {editMode && (
             <input
-              className={styles.input__file}
+              className={styles.input__file__bg}
               type="file"
               name="backgroundImg"
               accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg, image/webp"
               onChange={fileChangeHandler}
-              // ref={backgroundRef}
             />
           )}
           {editMode && (
@@ -284,6 +284,13 @@ export const UserProfile = ({
           )}
         </span>
         <span className={styles.button}>
+          {editMode && (
+            <OutlineButton
+              buttonText="Cancel"
+              clickHandler={() => setEditMode(false)}
+              fullWidth={true}
+            />
+          )}
           {selfMode ? (
             <SolidButton
               buttonText={editMode ? "Save" : "Edit"}
@@ -313,7 +320,7 @@ export const UserProfile = ({
             <span className="body1__typography">{bio}</span>
           )}
           <div className={`subtitle1__typography ${styles.link__container}`}>
-            📎:
+            {portfolioURL && <>📎:</>}
             {editMode ? (
               <input
                 type="url"
