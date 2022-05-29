@@ -43,5 +43,10 @@ Live link: [Link](https://quiet-media.vercel.app/)
 
 https://user-images.githubusercontent.com/43728957/169650077-03d7b476-0ad8-460f-b353-1b2f816d1bd5.mp4
 
-
+### Changes
+* Added disable mode for post and comment button when nothing is there in the text field.
+* Fixed some responsiveness.
+* Added debounce to the search.
+* Removed share button.
+* Fixed some bugs in profile and background image update.
 
