@@ -49,7 +49,6 @@ export const Home = () => {
 
   useEffect(() => {
     const currentElement = lastElement;
-    console.log(currentElement);
     const currentObserver = observer.current;
     if (currentElement) {
       currentObserver.observe(currentElement);

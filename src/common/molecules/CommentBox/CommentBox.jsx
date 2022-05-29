@@ -1,5 +1,5 @@
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { firestoreDB } from "../../../firebase";
 import { Avatar } from "../../atoms/Avatar/Avatar";
@@ -9,6 +9,8 @@ import styles from "./CommentBox.module.scss";
 export const CommentBox = ({ _id, comments }) => {
   const [value, setValue] = useState({ value: "", count: 0 });
   const { photoURL, username } = useSelector((store) => store.userInformation);
+  const [loading, setLoading] = useState(false);
+  const [empty, setEmpty] = useState(true);
 
   const submitHandler = async () => {
     try {
@@ -26,6 +28,7 @@ export const CommentBox = ({ _id, comments }) => {
       );
 
       setValue({ value: "", count: 0 });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -40,6 +43,14 @@ export const CommentBox = ({ _id, comments }) => {
     );
   };
 
+  useEffect(() => {
+    if (value.value.length === 0) {
+      setEmpty(true);
+    } else {
+      setEmpty(false);
+    }
+  }, [value]);
+
   return (
     <div className={styles.comment__box}>
       <div>
@@ -52,7 +63,11 @@ export const CommentBox = ({ _id, comments }) => {
         onChange={changeHandler}
         value={value.value}
       />
-      <SolidButton buttonText="Comment" clickHandler={submitHandler} />
+      <SolidButton
+        disabled={loading || empty}
+        buttonText={loading ? "Commenting..." : "Comment"}
+        clickHandler={submitHandler}
+      />
     </div>
   );
 };

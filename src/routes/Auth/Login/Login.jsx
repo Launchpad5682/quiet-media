@@ -5,7 +5,8 @@ import { Logo } from "../Logo";
 import { useLogin } from "./useLogin";
 
 export const Login = () => {
-  const { formData, loading, changeHandler, submitHandler } = useLogin();
+  const { formData, loading, changeHandler, submitHandler, testLoginHandler } =
+    useLogin();
   const navigate = useNavigate();
   return (
     <div className={styles.main}>
@@ -31,6 +32,11 @@ export const Login = () => {
             buttonText={loading ? "Logging in..." : "Login"}
             fullWidth={true}
             disabled={loading}
+          />
+          <SolidButton
+            buttonText={loading ? "Logging in with test..." : "Login with test"}
+            fullWidth={true}
+            clickHandler={testLoginHandler}
           />
           <OutlineButton
             buttonText="Create an account"

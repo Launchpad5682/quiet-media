@@ -26,6 +26,7 @@ export const TextBox = ({
   const [count, setCount] = useState(0);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [empty, setEmpty] = useState(true);
 
   const [selectedFile, setSelectedFile] = useState(null);
   const userInformation = useSelector((store) => store.userInformation);
@@ -35,6 +36,7 @@ export const TextBox = ({
       const { content, imageURL } = post;
       setValue(content);
       setSelectedFile(imageURL);
+      setCount(content.length);
     }
   }, [post, edit]);
 
@@ -129,6 +131,14 @@ export const TextBox = ({
     }
   };
 
+  useEffect(() => {
+    if (value.length === 0) {
+      setEmpty(true);
+    } else {
+      setEmpty(false);
+    }
+  }, [value]);
+
   return (
     <div className={styles.text__box}>
       <div className={styles.avatar__container}>
@@ -172,7 +182,7 @@ export const TextBox = ({
             />
           </div>
           <SolidButton
-            disabled={loading}
+            disabled={loading || empty}
             buttonText={loading ? "Posting..." : edit ? "Edit Post" : "Post"}
             clickHandler={() => submitHandler(value)}
           />

@@ -62,13 +62,14 @@ function App() {
 
   useEffect(() => {
     const route = pathname.split("/")[1];
-    console.log(route);
     if (
       route === "home" ||
       route === "search" ||
       route === "explore" ||
       route === "post" ||
-      route === "bookmarks"
+      route === "bookmarks" ||
+      route === "login" ||
+      route === "signup"
     ) {
       document.title = route[0].toUpperCase() + route.slice(1);
     } else if (route === "user") {

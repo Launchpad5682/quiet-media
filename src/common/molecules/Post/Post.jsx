@@ -1,5 +1,5 @@
 import { Avatar } from "../../atoms/Avatar/Avatar";
-import { BsShareFill, BsThreeDots } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
 import styles from "./Post.module.scss";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../../hooks/useOnClickOutside";
@@ -21,6 +21,13 @@ import { setModal } from "../../organisms/Modal/ModalSlice";
 import { deleteObject } from "firebase/storage";
 import { useFollow } from "../../../hooks/useFollow";
 import { useNavigate } from "react-router-dom";
+
+const formatDate = (createdAt) => {
+  const dateArr = createdAt.split(" ");
+  const time = dateArr[4].split(":").slice(0, -1).join(":");
+  const date = dateArr.slice(1, 4).join(" ");
+  return `${time} ${date}`;
+};
 
 export const Post = forwardRef(({ post }, ref) => {
   const [dropdown, setDropdown] = useState(false);
@@ -105,7 +112,8 @@ export const Post = forwardRef(({ post }, ref) => {
       );
     }
   };
-  const shareHandler = () => {};
+  // TODO
+  // const shareHandler = () => {};
 
   const followHandler = () => {
     if (follow) {
@@ -217,7 +225,7 @@ export const Post = forwardRef(({ post }, ref) => {
         <div className={styles.image__container}>
           {imageURL && <img src={imageURL} alt="" className="image__fit" />}
         </div>
-        <div className="subtitle2__typography">{createdAt}</div>
+        <div className="subtitle2__typography">{formatDate(createdAt)}</div>
       </div>
       <div className={styles.bottom}>
         <IconButton
@@ -233,7 +241,7 @@ export const Post = forwardRef(({ post }, ref) => {
           icon={bookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
           clickHandler={bookmarkHandler}
         />
-        <IconButton icon={<BsShareFill />} clickHandler={shareHandler} />
+        {/* <IconButton icon={<BsShareFill />} clickHandler={shareHandler} /> */}
       </div>
     </div>
   );
